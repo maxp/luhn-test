@@ -39,7 +39,9 @@
       
     
     :serve 
-    {:main-opts ["-m" "luh.main"]}}
+    {
+      :extra-paths ["resources"]
+      :main-opts ["-m" "luh.main"]}}
 
     ; :depstar { :extra-deps {seancorfield/depstar {:mvn/version "1.1.132"}}}
     ; :uberjar { :extra-paths ["resources"]}}
