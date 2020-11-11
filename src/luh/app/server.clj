@@ -3,11 +3,11 @@
     [clojure.spec.alpha   :as     s]
     [clojure.string       :refer  [blank?]]
     ;
-    [org.httpkit.server       :refer  [run-server server-stop!]]
-    ;[ring.util.response       :refer  [resource-response content-type]]
-    [ring.middleware.params           :refer  [wrap-params]]
-    [ring.middleware.keyword-params   :refer  [wrap-keyword-params]]))
+    [org.httpkit.server             :refer  [run-server server-stop!]]
+    [ring.middleware.params         :refer  [wrap-params]]
+    [ring.middleware.keyword-params :refer  [wrap-keyword-params]]
     ;[ring.middleware.multipart-params :refer  [wrap-multipart-params]]))
+    [luh.app.middleware             :refer  [wrap-json-params]]))
 ;=
 
 ; - - - - - - - - - - - - - - - - - - -
@@ -33,7 +33,7 @@
   ;
   (->
     handler
-    ;(wrap-json-params)
+    (wrap-json-params)
     (wrap-keyword-params) 
     ;(wrap-multipart-params)
     (wrap-params) 

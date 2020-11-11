@@ -7,7 +7,7 @@
       </style>
   </head>
   <body>
-    <div style="margin: 4rem;">
+    <div style="margin: 2rem 4rem;">
       
       <h1>Luhn-Test app</h1>
 
@@ -17,7 +17,34 @@
 
     </div>
     <script>
-      alert(window.fetch);
+      const API_URL = "http://localhost:8800/api/check-code"
+
+      const el_code   = document.getElementById("code")
+      const el_result = document.getElementById("result")
+
+      function api_call(params) {
+        console.log("api_call.params:", params);
+        fetch(API_URL, {
+          method: "POST",
+          headers: {'Content-Type': 'application/json;charset=utf-8'},
+          body: JSON.stringify(params)
+        })
+          .then(response => {
+            console.log("resp:", resp);
+            return response.text();
+          })
+          .then(text => {
+            el_result.value = text;
+          })
+          .catch(err => {
+            console.warn("api.error:", err);
+            alert("api.error");
+          })
+      };
+
+      document.getElementById("btn").addEventListener("click",
+        () => api_call({code:el_code.value})
+      );
     </script>
   </body>
 </html>

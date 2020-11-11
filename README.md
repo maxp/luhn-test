@@ -4,7 +4,7 @@ Enter 16-digits code on the form and check it using Luhn algorithm.
 
 ## HTTP endpoints
 
-- **/api/check-code**
+- **/api/check-code** - post json data format
   - parameters:
     - `code` - 16 digits string
   - returns:
